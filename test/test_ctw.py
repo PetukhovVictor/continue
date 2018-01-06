@@ -64,7 +64,7 @@ def test_max_depth():
 
 
 def test_max_depth_sum():
-    for seq_len in xrange(10):
+    for seq_len in range(10):
         total = 0.0
         for seq in iter_all_seqs(seq_len):
             model = ctw.create_model(max_depth=8)
@@ -115,7 +115,7 @@ def iter_all_seqs(seq_len):
 
 
 def _check_estim_update(estim_update, estimator):
-    for seq_len in xrange(10):
+    for seq_len in range(10):
         for bits in itertools.product([0, 1], repeat=seq_len):
             p = 1.0
             counts = [0, 0]

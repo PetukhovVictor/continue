@@ -61,7 +61,7 @@ def test_calc_p_sum():
 
 
 def _check_p_sum(p_func):
-    for seq_len in xrange(10):
+    for seq_len in range(10):
         total = 0.0
         parts = []
         for bits in itertools.product("01", repeat=seq_len):

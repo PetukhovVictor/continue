@@ -49,13 +49,13 @@ class Historian:
     def get_generated_positions(self):
         positions = []
         for start in self._get_step_starts():
-            for i in xrange(self.num_generated_bits):
+            for i in range(self.num_generated_bits):
                 positions.append(start + i)
         return positions
 
     def get_factored_positions(self):
         on_factors = []
-        for i in xrange(self.num_generated_bits):
+        for i in range(self.num_generated_bits):
             positions = []
             for start in self._get_step_starts(offset=i):
                 positions.append(start)
@@ -80,7 +80,7 @@ class Historian:
     def _get_step_starts(self, offset=0):
         step_len = self.num_generated_bits + self.num_added_bits
         num_steps = len(self.history) // step_len
-        return [offset + i * step_len for i in xrange(num_steps)]
+        return [offset + i * step_len for i in range(num_steps)]
 
 
 

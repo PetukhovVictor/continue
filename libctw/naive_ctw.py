@@ -73,7 +73,7 @@ def _count_followers(context, seq):
     # Better algorithms exist.
     num_zeros = 0
     num_ones = 0
-    for i in xrange(len(seq) - len(context)):
+    for i in range(len(seq) - len(context)):
         if seq[i:].startswith(context):
             if seq[i + len(context)] == "0":
                 num_zeros += 1
@@ -104,11 +104,11 @@ def _estim_kt_p(num_zeros, num_ones):
     The resulting Bayesian mixture is a "Krichevski-Trofimov" estimator.
     """
     a_mul = 1.0
-    for i in xrange(num_zeros):
+    for i in range(num_zeros):
         a_mul *= i + 0.5
 
     b_mul = 1.0
-    for i in xrange(num_ones):
+    for i in range(num_ones):
         b_mul *= i + 0.5
 
     return a_mul * b_mul / float(math.factorial(num_zeros + num_ones))

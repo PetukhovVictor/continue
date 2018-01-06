@@ -3,7 +3,7 @@ from libctw import ctw
 
 def create_model(deterministic=False, max_depth=None, num_factors=8):
     cts = []
-    for i in xrange(num_factors):
+    for i in range(num_factors):
         cts.append(ctw.create_model(deterministic, max_depth))
 
     return _Factored(cts)
@@ -48,7 +48,7 @@ class _Factored:
             ct.switch_history()
 
     def revert_generated(self, num_bits):
-        for ignored in xrange(num_bits):
+        for ignored in range(num_bits):
             self.offset = (self.offset - 1) % len(self.cts)
             for i, ct in enumerate(self.cts):
                 if i == self.offset:

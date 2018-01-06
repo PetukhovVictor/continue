@@ -4,7 +4,7 @@ def to_binseq(bytes):
     seq = []
     for byte in bytes:
         value = ord(byte)
-        for i in xrange(7, -1, -1):
+        for i in range(7, -1, -1):
             one = value & 2**i
             seq.append("1" if one else "0")
 
@@ -17,7 +17,7 @@ def to_bytes(bits):
     index = 0
     while index < len(bits):
         value = 0
-        for i in xrange(7, -1, -1):
+        for i in range(7, -1, -1):
             if bits[index + (7 - i)] == "1":
                 value |= 2**i
 

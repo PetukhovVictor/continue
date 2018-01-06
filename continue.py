@@ -16,10 +16,10 @@ from libctw import modeling, byting, formatting
 from libctw.anycontext import creating
 
 DEFAULTS = {
-        "num_predicted_bits": 100,
+        "num_predicted_bits": 4,
         "estimator": "kt",
         "verbose": 0,
-        }
+}
 
 def _parse_args():
     parser = optparse.OptionParser(__doc__)
@@ -111,7 +111,7 @@ def main():
     bits = ""
     probability = 1.0
     sys.stdout.write("%s -> " % formatting.to_seq(history))
-    for i in xrange(num_predicted_bits):
+    for i in range(num_predicted_bits):
         bit, bit_p = modeling.advance(model)
         probs.append(bit_p)
         probability *= bit_p
@@ -119,15 +119,15 @@ def main():
         sys.stdout.flush()
         bits += str(bit)
 
-    print
+    print()
     if options.bytes:
-        print "%s -> %s" % (input_seq, byting.to_bytes(bits))
+        print("%s -> %s" % (input_seq, byting.to_bytes(bits)))
 
     if len(probs) > 10:
         probs_info = _format_products(probs[:9]) + " * ..."
     else:
         probs_info = _format_products(probs)
-    print "with P = %f = %s" % (probability, probs_info)
+    print("with P = %f = %s" % (probability, probs_info))
 
 
 if __name__ == "__main__":

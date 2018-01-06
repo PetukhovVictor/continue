@@ -133,7 +133,7 @@ class _CtModel:
         return math.exp(new_log_pw - log_pw)
 
     def revert_generated(self, num_bits):
-        for i in xrange(num_bits):
+        for i in range(num_bits):
             self._revert_bit()
 
     def revert_added(self, num_bits):
