@@ -110,24 +110,13 @@ def main():
     probs = []
     bits = ""
     probability = 1.0
-    sys.stdout.write("%s -> " % formatting.to_seq(history))
     for i in range(num_predicted_bits):
         bit, bit_p = modeling.advance(model)
         probs.append(bit_p)
         probability *= bit_p
-        sys.stdout.write(str(bit))
-        sys.stdout.flush()
         bits += str(bit)
 
-    print()
-    if options.bytes:
-        print("%s -> %s" % (input_seq, byting.to_bytes(bits)))
-
-    if len(probs) > 10:
-        probs_info = _format_products(probs[:9]) + " * ..."
-    else:
-        probs_info = _format_products(probs)
-    print("with P = %f = %s" % (probability, probs_info))
+    print('%s,%f' % (bits, probability))
 
 
 if __name__ == "__main__":
